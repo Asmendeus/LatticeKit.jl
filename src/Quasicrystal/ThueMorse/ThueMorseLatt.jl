@@ -4,7 +4,7 @@
     end
 
 # Constructor
-    ThueMorseLattice(n::Int...)
+    ThueMorseLattice(first::Int64, n::Int...)
 """
 struct ThueMorseLattice{D, n} <: AbstractQuasicrystalLattice{D}
     sites::Vector{RealSite{D}}

@@ -1,10 +1,10 @@
 # LatticeKit.jl
 
-A Julia package for generating crystal lattices of finite and infinite size and quasicrystal lattices of finite size.
+A Julia package for generating crystal and quasicrystal lattices.
 
 `LatticeKit.jl` uses the constructor functions to generate all the sites in the lattice and stores them in order, with the index of each site being its own number, as the output interface of a range of functions.
 
-## Finite Crystal Lattice
+## Crystal Lattice
 
 The sites in a D-dimension crystal lattice are represented in D-dimension basic vector space coordinates.
 
@@ -21,7 +21,7 @@ General2DLattice(G2DLatt)
 General3DLattice(G3DLatt)
 ```
 
-## Finite Quasicrystal Lattice
+## Quasicrystal Lattice
 
 The sites in a D-dimension quasicrystal lattice are represented in D-dimension space coordinates.
 
