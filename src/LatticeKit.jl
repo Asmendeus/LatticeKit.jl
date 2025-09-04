@@ -61,4 +61,4 @@ export ThueMorseLattice, ThueMorseLatt
 include("Quasicrystal/ThueMorse/ThueMorseLatt.jl")
 include("Quasicrystal/ThueMorse/getAllPairs.jl")
 
-end # module FiniteLattice
+end # module LatticeKit
