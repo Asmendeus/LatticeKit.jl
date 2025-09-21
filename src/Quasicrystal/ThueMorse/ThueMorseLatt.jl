@@ -16,6 +16,27 @@ struct ThueMorseLattice{D, n} <: AbstractQuasicrystalLattice{D}
 end
 const ThueMorseLatt = ThueMorseLattice
 
+function Base.show(io::IO, latt::ThueMorseLattice{D}) where D
+    println(io, "$(typeof(latt)):")
+
+    print(io, "  sites: [")
+    for i in 1:4
+        print(io, "$(latt.sites[i]), ")
+    end
+    if nsites(latt) ≤ 5
+        println(io, "$(latt.sites[5])]")
+    else
+        println(io, "$(latt.sites[5]), ⋯ ]")
+    end
+
+    if D == 2
+        println(io, "  graphic:")
+        fig = scatterplot(map(x->x.coord[1], latt.sites), map(x->x.coord[2], latt.sites))
+        println(io, fig)
+    end
+end
+
+# ========== tools ==========
 function _ThueMorseSequence(first::Int, n::Int) # length = 2 ^ n
     @assert n > 0
     @assert first in [0, 1]

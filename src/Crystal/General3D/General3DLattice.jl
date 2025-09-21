@@ -20,3 +20,17 @@ struct General3DLattice{L, W, H, C} <: AbstractCrystalLattice{3}
     end
 end
 const G3DLatt = General3DLattice
+
+function Base.show(io::IO, latt::General3DLattice)
+    println(io, "$(typeof(latt)):")
+
+    print(io, "  sites: [")
+    for i in 1:4
+        print(io, "$(latt.sites[i]), ")
+    end
+    if nsites(latt) ≤ 5
+        println(io, "$(latt.sites[5])]")
+    else
+        println(io, "$(latt.sites[5]), ⋯ ]")
+    end
+end

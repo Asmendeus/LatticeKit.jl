@@ -30,3 +30,25 @@ struct SquareLattice{L, W} <: AbstractCrystalLattice{2}
     end
 end
 const SquaLatt = SquareLattice
+
+function Base.show(io::IO, latt::SquareLattice)
+    println(io, "$(typeof(latt)):")
+
+    print(io, "  sites: [")
+    for i in 1:4
+        print(io, "$(latt.sites[i]), ")
+    end
+    if nsites(latt) ≤ 5
+        println(io, "$(latt.sites[5])]")
+    else
+        println(io, "$(latt.sites[5]), ⋯ ]")
+    end
+
+    vec_L = map(x->x.coord[1], latt.sites)
+    vec_W = map(x->x.coord[2], latt.sites)
+    x = 1.0 * vec_L
+    y = 1.0 * vec_W
+    fig = scatterplot(x, y)
+    println(io, "  graphic:")
+    println(io, fig)
+end

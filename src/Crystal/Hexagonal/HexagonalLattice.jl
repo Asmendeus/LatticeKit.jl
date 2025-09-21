@@ -38,3 +38,26 @@ struct HexagonalLattice{L, W} <: AbstractCrystalLattice{2}
     end
 end
 const HexaLatt = HexagonalLattice
+
+function Base.show(io::IO, latt::HexagonalLattice)
+    println(io, "$(typeof(latt)):")
+
+    print(io, "  sites: [")
+    for i in 1:4
+        print(io, "$(latt.sites[i]), ")
+    end
+    if nsites(latt) ≤ 5
+        println(io, "$(latt.sites[5])]")
+    else
+        println(io, "$(latt.sites[5]), ⋯ ]")
+    end
+
+    vec_L = map(x->x.coord[1], latt.sites)
+    vec_W = map(x->x.coord[2], latt.sites)
+    vec_C = map(x->x.subcell, latt.sites)
+    x = sqrt(3) * vec_L + sqrt(3)/2 * vec_W
+    y = 3/2 * vec_W + map(c->c==1 ? 0 : 1, vec_C)
+    fig = scatterplot(x, y)
+    println(io, "  graphic:")
+    println(io, fig)
+end

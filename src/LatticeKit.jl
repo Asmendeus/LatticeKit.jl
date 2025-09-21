@@ -1,4 +1,5 @@
 module LatticeKit
+using UnicodePlots
 
 # Site
 export AbstractSite
@@ -60,5 +61,9 @@ include("Quasicrystal/AbstractQuasicrystalLattice.jl")
 export ThueMorseLattice, ThueMorseLatt
 include("Quasicrystal/ThueMorse/ThueMorseLatt.jl")
 include("Quasicrystal/ThueMorse/getAllPairs.jl")
+
+export PenroseLattice, PenLatt
+include("Quasicrystal/Penrose/PenLatt.jl")
+include("Quasicrystal/Penrose/getAllPairs.jl")
 
 end # module LatticeKit

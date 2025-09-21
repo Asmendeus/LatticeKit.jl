@@ -20,3 +20,17 @@ struct General2DLattice{L, W, C} <: AbstractCrystalLattice{2}
     end
 end
 const G2DLatt = General2DLattice
+
+function Base.show(io::IO, latt::General2DLattice)
+    println(io, "$(typeof(latt)):")
+
+    print(io, "  sites: [")
+    for i in 1:4
+        print(io, "$(latt.sites[i]), ")
+    end
+    if nsites(latt) ≤ 5
+        println(io, "$(latt.sites[5])]")
+    else
+        println(io, "$(latt.sites[5]), ⋯ ]")
+    end
+end
