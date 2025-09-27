@@ -58,7 +58,7 @@ include("Crystal/General3D/getAllPairs.jl")
 export AbstractQuasicrystalLattice
 include("Quasicrystal/AbstractQuasicrystalLattice.jl")
 
-export ThueMorseLattice, ThueMorseLatt
+export ThueMorseLattice, ThueMorseLatt, get_n, get_r
 include("Quasicrystal/ThueMorse/ThueMorseLatt.jl")
 include("Quasicrystal/ThueMorse/getAllPairs.jl")
 

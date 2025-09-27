@@ -12,8 +12,8 @@ function getAllPairs(latt::ThueMorseLattice{2}, r::Int64)
         pairs = Tuple{Int64, Int64}[]
         for site in latt.sites
 
-            site_up = site + (1, 0)
-            site_right = site + (0, 1)
+            site_up = site + (2, 0)
+            site_right = site + (0, 2)
 
             if site_up in latt.sites
                 push!(pairs, (getSite(latt, site), getSite(latt, site_up)))
@@ -28,11 +28,11 @@ function getAllPairs(latt::ThueMorseLattice{2}, r::Int64)
         pairs = Tuple{Int64, Int64}[]
         for site in latt.sites
 
-            site_down = site + (-1, 0)
-            site_up = site + (1, 0)
-            site_right = site + (0, 1)
-            site_right_up = site + (1, 1)
-            site_right_down = site + (-1, 1)
+            site_down = site + (-2, 0)
+            site_up = site + (2, 0)
+            site_right = site + (0, 2)
+            site_right_up = site + (2, 2)
+            site_right_down = site + (-2, 2)
 
             if (site_right_down in latt.sites) && (!(site_down in latt.sites) || !(site_right in latt.sites))
                 push!(pairs, (getSite(latt, site), getSite(latt, site_right_down)))
