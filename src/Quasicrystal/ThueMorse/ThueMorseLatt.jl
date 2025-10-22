@@ -1,5 +1,5 @@
 """
-    struct ThueMorseLattice{D, n, r} <: AbstractQuasicrystalLattice{D}
+    struct ThueMorseLattice{D, first, n, r} <: AbstractQuasicrystalLattice{D}
         sites::Vector{RealSite{D}}
     end
 
@@ -7,7 +7,7 @@
     ThueMorseLattice(first::Int64, n::Int...)
     ThueMorseLattice(first::Int64, n::NTuple{N, Int}, r::Real=Inf)
 """
-struct ThueMorseLattice{D, n, r} <: AbstractQuasicrystalLattice{D}
+struct ThueMorseLattice{D, first, n, r} <: AbstractQuasicrystalLattice{D}
     sites::Vector{RealSite{D}}
 
     function ThueMorseLattice(first::Int64, n::NTuple{N, Int}, r::Real=Inf) where N # Nsite = prod(2 .^ n) / 2
@@ -19,7 +19,7 @@ struct ThueMorseLattice{D, n, r} <: AbstractQuasicrystalLattice{D}
         sites = [RealSite(Tuple(map(d->coords[d][i],1:D))) for i in 1:length(sites)]
 
         sites = filter(x -> sum(x.coord.^2) < r^2, sites)
-        return new{D, n, r}(sites)
+        return new{D, first, n, r}(sites)
     end
     function ThueMorseLattice(first::Int64, n::Int...) # Nsite = prod(2 .^ n) / 2
         @assert first in [0, 1] "`first` should be 0 or 1"
@@ -27,13 +27,14 @@ struct ThueMorseLattice{D, n, r} <: AbstractQuasicrystalLattice{D}
         sites = _array2latt(_ThueMorseLattice(first, n...), 0)
         coords = [map(c->c.coord[d], sites)*2 .- (2^n[d]+1) for d in 1:D]
         sites = [RealSite(Tuple(map(d->coords[d][i],1:D))) for i in 1:length(sites)]
-        return new{D, n, Inf}(sites)
+        return new{D, first, n, Inf}(sites)
     end
 end
 const ThueMorseLatt = ThueMorseLattice
 
-get_n(latt::ThueMorseLatt{D, n}) where {D, n} = n
-get_r(latt::ThueMorseLatt{D, n, r}) where {D, n, r} = r
+get_first(::ThueMorseLatt{D, first}) where {D, first} = first
+get_n(::ThueMorseLatt{D, first, n}) where {D, first, n} = n
+get_r(::ThueMorseLatt{D, first, n, r}) where {D, first, n, r} = r
 
 function Base.show(io::IO, latt::ThueMorseLattice{D}) where D
     println(io, "$(typeof(latt)):")
