@@ -62,8 +62,8 @@ export ThueMorseLattice, ThueMorseLatt, get_first, get_n, get_r
 include("Quasicrystal/ThueMorse/ThueMorseLatt.jl")
 include("Quasicrystal/ThueMorse/getAllPairs.jl")
 
-export PenroseLattice, PenLatt
-include("Quasicrystal/Penrose/PenLatt.jl")
-include("Quasicrystal/Penrose/getAllPairs.jl")
+export General2DQuasicrystalLattice, G2DQLatt
+include("Quasicrystal/General2D/General2DQuasicrystal.jl")
+include("Quasicrystal/General2D/getAllPairs.jl")
 
 end # module LatticeKit

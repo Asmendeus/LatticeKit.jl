@@ -1,19 +1,17 @@
 """
-    struct PenroseLattice{ns} <: AbstractQuasicrystalLattice{2}
+    struct General2DQuasicrystalLattice{ns} <: AbstractQuasicrystalLattice{2}
         sites::Vector{RealSite{2}}
     end
-
-Prismatic paved (P3) Penrose quasi-crystal.
 
 # Constructor
     #TODO
 """
-struct PenroseLattice <: AbstractQuasicrystalLattice{2}
+struct General2DQuasicrystalLattice <: AbstractQuasicrystalLattice{2}
     sites::Vector{RealSite{2}}
 end
-const PenLatt = PenroseLattice
+const G2DQLatt = General2DQuasicrystalLattice
 
-function Base.show(io::IO, latt::PenroseLattice)
+function Base.show(io::IO, latt::General2DQuasicrystalLattice)
     println(io, "$(typeof(latt)):")
 
     print(io, "  sites: [")
@@ -30,5 +28,3 @@ function Base.show(io::IO, latt::PenroseLattice)
     fig = scatterplot(map(x->x.coord[1], latt.sites), map(x->x.coord[2], latt.sites))
     println(io, fig)
 end
-
-# ========== tools ==========
