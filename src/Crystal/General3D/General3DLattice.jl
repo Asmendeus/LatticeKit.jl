@@ -21,6 +21,8 @@ struct General3DLattice{L, W, H, C} <: AbstractCrystalLattice{3}
 end
 const G3DLatt = General3DLattice
 
+Base.size(latt::General3DLattice{L, W, H}) where {L, W, H} = (L, W, H)
+
 function Base.show(io::IO, latt::General3DLattice)
     println(io, "$(typeof(latt)):")
 

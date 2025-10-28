@@ -21,6 +21,8 @@ struct General1DLattice{L, C} <: AbstractCrystalLattice{1}
 end
 const G1DLatt = General1DLattice
 
+Base.size(latt::General1DLattice{L}) where L = (L,)
+
 function Base.show(io::IO, latt::General1DLattice)
     println(io, "$(typeof(latt)):")
 

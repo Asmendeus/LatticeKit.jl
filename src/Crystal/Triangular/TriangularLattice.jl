@@ -7,7 +7,7 @@
     end
 
 # Constructor
-    TriangularLattice(L::Int, W::Int)
+    TriangularLattice(L::Int64, W::Int64)
 
 # Graphical representation
 
@@ -33,6 +33,8 @@ struct TriangularLattice{L, W} <: AbstractCrystalLattice{2}
     end
 end
 const TriaLatt = TriangularLattice
+
+Base.size(latt::TriangularLattice{L, W}) where {L, W} = (L, W)
 
 function Base.show(io::IO, latt::TriangularLattice)
     println(io, "$(typeof(latt)):")

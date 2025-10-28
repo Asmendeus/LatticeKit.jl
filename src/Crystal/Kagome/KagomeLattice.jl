@@ -4,7 +4,7 @@
     end
 
 # Constructor
-    KagomeLattice(L::Int, W::Int)
+    KagomeLattice(L::Int64, W::Int64)
 
 # Graphical representation
 
@@ -38,6 +38,8 @@ struct KagomeLattice{L, W} <: AbstractCrystalLattice{2}
     end
 end
 const KagoLatt = KagomeLattice
+
+Base.size(latt::KagomeLattice{L, W}) where {L, W} = (L, W)
 
 function Base.show(io::IO, latt::KagomeLattice)
     println(io, "$(typeof(latt)):")

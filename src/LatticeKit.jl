@@ -53,6 +53,10 @@ export General3DLattice, G3DLatt
 include("Crystal/General3D/General3DLattice.jl")
 include("Crystal/General3D/getAllPairs.jl")
 
+export CubicLattice, CubiLatt
+include("Crystal/Cubic/CubicLattice.jl")
+include("Crystal/Cubic/getAllPairs.jl")
+
 
 # Quasicrystal
 export AbstractQuasicrystalLattice

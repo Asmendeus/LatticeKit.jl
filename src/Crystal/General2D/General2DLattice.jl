@@ -21,6 +21,8 @@ struct General2DLattice{L, W, C} <: AbstractCrystalLattice{2}
 end
 const G2DLatt = General2DLattice
 
+Base.size(latt::General2DLattice{L, W}) where {L, W} = (L, W)
+
 function Base.show(io::IO, latt::General2DLattice)
     println(io, "$(typeof(latt)):")
 

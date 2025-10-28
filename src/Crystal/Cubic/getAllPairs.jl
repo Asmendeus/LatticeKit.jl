@@ -1,0 +1,49 @@
+function getAllPairs(latt::CubicLattice{L, W, H}, v::NTuple{3, Int64}, which_from::Int64, which_to::Int64, boundary::AbstractBondaryCondition=PBC()) where {L, W, H}
+    @assert which_from == 1 "Out of the range of subcell: `which_from = $which_from`"
+    @assert which_to == 1 "Out of the range of subcell: `which_to = $which_to`"
+
+    pairs = NTuple{2, Int64}[]
+    if boundary isa PBC
+        for site in latt.sites
+            site_v = mod(site + v, (L, W, H))
+            if site_v in latt.sites
+                push!(pairs, (getSite(latt, site), getSite(latt, site_v)))
+            end
+        end
+    elseif boundary isa OBC
+        for site in latt.sites
+            site_v = site + v
+            if site_v in latt.sites
+                push!(pairs, (getSite(latt, site), getSite(latt, site_v)))
+            end
+        end
+    else
+        throw(ArgumentError("Undefined behavior of `boundary = $boundary`"))
+    end
+    return pairs
+end
+function getAllPairs(latt::CubicLattice{L, W, H}, v::NTuple{3, Int64}, boundary::AbstractBondaryCondition=PBC()) where {L, W, H}
+    return getAllPairs(latt, v, 1, 1, boundary)
+end
+
+function getAllPairs(latt::CubicLattice, r::Int64, boundary::AbstractBondaryCondition=PBC())
+    if r == 1
+        return vcat(getAllPairs(latt, (0, 0, 1), boundary),
+                    getAllPairs(latt, (0, 1, 0), boundary),
+                    getAllPairs(latt, (1, 0, 0), boundary))
+    elseif r == 2
+        return vcat(getAllPairs(latt, (1, -1, 0), boundary),
+                    getAllPairs(latt, (1, 1, 0), boundary),
+                    getAllPairs(latt, (1, 0, -1), boundary),
+                    getAllPairs(latt, (1, 0, 1), boundary),
+                    getAllPairs(latt, (0, 1, -1), boundary),
+                    getAllPairs(latt, (0, 1, 1), boundary))
+    elseif r == 3
+        return vcat(getAllPairs(latt, (1, -1, -1), boundary),
+                    getAllPairs(latt, (1, 1, -1), boundary),
+                    getAllPairs(latt, (1, -1, 1), boundary),
+                    getAllPairs(latt, (1, 1, 1), boundary))
+    else
+        throw(ArgumentError("Undefined behavior of `getAllPairs` for `r = $r`"))
+    end
+end

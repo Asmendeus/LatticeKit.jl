@@ -4,7 +4,7 @@
     end
 
 # Constructor
-    SquareLattice(L::Int, W::Int)
+    SquareLattice(L::Int64, W::Int64)
 
 # Graphical representation
 
@@ -30,6 +30,8 @@ struct SquareLattice{L, W} <: AbstractCrystalLattice{2}
     end
 end
 const SquaLatt = SquareLattice
+
+Base.size(latt::SquareLattice{L, W}) where {L, W} = (L, W)
 
 function Base.show(io::IO, latt::SquareLattice)
     println(io, "$(typeof(latt)):")

@@ -4,7 +4,7 @@
     end
 
 # Constructor
-    HexagonalLattice(L::Int, W::Int)
+    HexagonalLattice(L::Int64, W::Int64)
 
 # Graphical representation
 
@@ -38,6 +38,8 @@ struct HexagonalLattice{L, W} <: AbstractCrystalLattice{2}
     end
 end
 const HexaLatt = HexagonalLattice
+
+Base.size(latt::HexagonalLattice{L, W}) where {L, W} = (L, W)
 
 function Base.show(io::IO, latt::HexagonalLattice)
     println(io, "$(typeof(latt)):")
