@@ -23,11 +23,11 @@ Return number of sites.
 nsites(latt::AbstractQuasicrystalLattice) = length(latt.sites)
 
 """
-    getSite(latt::AbstractQuasicrystalLattice{D}, site::RealSite{D})
+    getSite(latt::AbstractQuasicrystalLattice{D}, site::RealSite{D}; tol::Float64=1e-4)
 
 Return the number of the site.
 """
-getSite(latt::AbstractQuasicrystalLattice{D}, site::RealSite{D}) where D = findfirst(x -> maximum(abs.(x.coord .- site.coord)) < 1e-12, latt.sites)
+getSite(latt::AbstractQuasicrystalLattice{D}, site::RealSite{D}; tol::Float64=1e-4) where D = findfirst(x -> maximum(abs.(x.coord .- site.coord)) < tol, latt.sites)
 
 """
     getAllSites(latt::AbstractQuasicrystalLattice)
