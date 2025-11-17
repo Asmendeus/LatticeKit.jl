@@ -39,7 +39,7 @@ get_r(::ThueMorseLatt{D, first, n, r}) where {D, first, n, r} = r
 function Base.show(io::IO, latt::ThueMorseLattice{D}) where D
     println(io, "$(typeof(latt)):")
 
-    print(io, "  sites: [")
+    print(io, " $(nsites(latt)) sites: [")
     if nsites(latt) == 0
         println(io, "]")
     elseif nsites(latt) ≤ 5

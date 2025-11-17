@@ -24,13 +24,18 @@ Base.size(latt::CubicLattice{L, W, H}) where {L, W, H} = (L, W, H)
 function Base.show(io::IO, latt::CubicLattice)
     println(io, "$(typeof(latt)):")
 
-    print(io, "  sites: [")
-    for i in 1:4
-        print(io, "$(latt.sites[i]), ")
-    end
-    if nsites(latt) ≤ 5
-        println(io, "$(latt.sites[5])]")
+    print(io, " $(nsites(latt)) sites: [")
+    if nsites(latt) == 0
+        println(io, "]")
+    elseif nsites(latt) ≤ 5
+        for i in 1:nsites(latt)-1
+            print(io, "$(latt.sites[i]), ")
+        end
+        println(io, "$(latt.sites[end])]")
     else
+        for i in 1:4
+            print(io, "$(latt.sites[i]), ")
+        end
         println(io, "$(latt.sites[5]), ⋯ ]")
     end
 end
