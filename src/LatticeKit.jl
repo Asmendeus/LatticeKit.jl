@@ -14,6 +14,7 @@ include("Site/RealSite.jl")
 export AbstractBondaryCondition
 export OpenBoundaryCondition, OBC
 export PeriodicBoundaryCondition, PBC
+export MixedBoundaryCondition, MBC
 include("Boundary/BoundaryCondition.jl")
 
 
