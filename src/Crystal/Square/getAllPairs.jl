@@ -20,16 +20,14 @@ function getAllPairs(latt::SquareLattice{L, W}, v::NTuple{2, Int64}, which_from:
     elseif boundary isa MBC
         if boundary == MBC((PBC(), OBC()))
             for site in latt.sites
-                tmp = site + v
-                site_v = BasicSite((mod(tmp.coord[1], L), tmp.coord[2]), tmp.subcell)
+                site_v = mod(site + v, (L, Inf))
                 if site_v in latt.sites
                     push!(pairs, (getSite(latt, site), getSite(latt, site_v)))
                 end
             end
         elseif boundary == MBC((OBC(), PBC()))
             for site in latt.sites
-                tmp = site + v
-                site_v = BasicSite((tmp.coord[1], mod(tmp.coord[2], W)), tmp.subcell)
+                site_v = mod(site + v, (Inf, W))
                 if site_v in latt.sites
                     push!(pairs, (getSite(latt, site), getSite(latt, site_v)))
                 end
