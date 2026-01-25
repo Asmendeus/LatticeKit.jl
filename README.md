@@ -4,6 +4,8 @@ A Julia package for generating crystal and quasicrystal lattices.
 
 `LatticeKit.jl` uses the constructor functions to generate all the sites in the lattice and stores them in order, with the index of each site being its own number, as the output interface of a range of functions.
 
+WARNING: This package is not yet officially open, and some features may be added, removed, or modified at any time.
+
 ## Crystal Lattice
 
 The sites in a D-dimension crystal lattice are represented in D-dimension basic vector space coordinates.
