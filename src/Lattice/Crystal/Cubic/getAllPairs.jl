@@ -1,4 +1,4 @@
-function getAllPairs(latt::CubicLattice{L, W, H}, v::NTuple{3, Int64}, which_from::Int64, which_to::Int64, boundary::AbstractBondaryCondition=PBC()) where {L, W, H}
+function getAllPairs(latt::CubicLattice{L, W, H}, v::NTuple{3, Int64}, which_from::Int64, which_to::Int64, boundary::AbstractBoundaryCondition=PBC()) where {L, W, H}
     @assert which_from == 1 "Out of the range of subcell: `which_from = $which_from`"
     @assert which_to == 1 "Out of the range of subcell: `which_to = $which_to`"
 
@@ -22,11 +22,11 @@ function getAllPairs(latt::CubicLattice{L, W, H}, v::NTuple{3, Int64}, which_fro
     end
     return pairs
 end
-function getAllPairs(latt::CubicLattice{L, W, H}, v::NTuple{3, Int64}, boundary::AbstractBondaryCondition=PBC()) where {L, W, H}
+function getAllPairs(latt::CubicLattice{L, W, H}, v::NTuple{3, Int64}, boundary::AbstractBoundaryCondition=PBC()) where {L, W, H}
     return getAllPairs(latt, v, 1, 1, boundary)
 end
 
-function getAllPairs(latt::CubicLattice, r::Int64, boundary::AbstractBondaryCondition=PBC())
+function getAllPairs(latt::CubicLattice, r::Int64, boundary::AbstractBoundaryCondition=PBC())
     if r == 1
         return vcat(getAllPairs(latt, (0, 0, 1), boundary),
                     getAllPairs(latt, (0, 1, 0), boundary),

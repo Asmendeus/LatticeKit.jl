@@ -1,4 +1,4 @@
-function getAllPairs(latt::General2DLattice{L, W, C}, v::NTuple{2, Int64}, which_from::Int64, which_to::Int64, boundary::AbstractBondaryCondition=PBC()) where {L, W, C}
+function getAllPairs(latt::General2DLattice{L, W, C}, v::NTuple{2, Int64}, which_from::Int64, which_to::Int64, boundary::AbstractBoundaryCondition=PBC()) where {L, W, C}
     @assert which_from in 1:C "Out of the range of subcell: `which_from = $which_from`"
     @assert which_to in 1:C "Out of the range of subcell: `which_to = $which_to`"
 

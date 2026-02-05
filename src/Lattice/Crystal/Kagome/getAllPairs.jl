@@ -1,4 +1,4 @@
-function getAllPairs(latt::KagomeLattice{L, W}, v::NTuple{2, Int64}, which_from::Int64, which_to::Int64, boundary::AbstractBondaryCondition=PBC()) where {L, W}
+function getAllPairs(latt::KagomeLattice{L, W}, v::NTuple{2, Int64}, which_from::Int64, which_to::Int64, boundary::AbstractBoundaryCondition=PBC()) where {L, W}
     @assert which_from in (1, 2, 3) "Out of the range of subcell: `which_from = $which_from`"
     @assert which_to in (1, 2, 3) "Out of the range of subcell: `which_to = $which_to`"
 
@@ -25,7 +25,7 @@ function getAllPairs(latt::KagomeLattice{L, W}, v::NTuple{2, Int64}, which_from:
     return pairs
 end
 
-function getAllPairs(latt::KagomeLattice, r::Int64, boundary::AbstractBondaryCondition=PBC())
+function getAllPairs(latt::KagomeLattice, r::Int64, boundary::AbstractBoundaryCondition=PBC())
     if r == 1
         return vcat(getAllPairs(latt, (0, 0), 1, 2, boundary),
                     getAllPairs(latt, (0, 0), 1, 3, boundary),
