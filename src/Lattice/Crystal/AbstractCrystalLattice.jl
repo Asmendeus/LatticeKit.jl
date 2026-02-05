@@ -5,7 +5,7 @@ Wrapper type for D-dimension crystal lattice in D-dimension basic vector space c
 
 Note each concrete subtype must have a field `sites::Vector{BasicSite{D}}` to save the cell locations and subcells of sites.
 """
-abstract type AbstractCrystalLattice{D} end
+abstract type AbstractCrystalLattice{D} <: AbstractLattice{D} end
 
 
 """
