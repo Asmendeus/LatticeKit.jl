@@ -1,5 +1,5 @@
 """
-    abstract type AbstractCrystalLattice{D}
+    abstract type AbstractCrystalLattice{D} <: AbstractLattice{D}
 
 Wrapper type for D-dimension crystal lattice in D-dimension basic vector space coordinates.
 

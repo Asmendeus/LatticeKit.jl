@@ -1,11 +1,11 @@
 """
-    abstract type AbstractQuasicrystalLattice{D}
+    abstract type AbstractQuasicrystalLattice{D} <: AbstractLattice{D}
 
 Wrapper type for D-dimension quasicrystal lattice in D-dimension real space coordinates.
 
 Note each concrete subtype must have a field `sites::Vector{RealSite{D}}` to save the site coordinates.
 """
-abstract type AbstractQuasicrystalLattice{D} end
+abstract type AbstractQuasicrystalLattice{D} <: AbstractLattice{D} end
 
 
 """

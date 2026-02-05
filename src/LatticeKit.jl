@@ -17,58 +17,61 @@ export PeriodicBoundaryCondition, PBC
 export MixedBoundaryCondition, MBC
 include("Boundary/BoundaryCondition.jl")
 
+# Lattice
+export AbstractLattice
+include("Lattice/AbstractLattice.jl")
 
-# Crystal
+## Crystal
 export dim, nsites, getSite, getAllSites, getAllPairs
 export AbstractCrystalLattice
-include("Crystal/AbstractCrystalLattice.jl")
+include("Lattice/Crystal/AbstractCrystalLattice.jl")
 
-## 1D
+### 1D
 export General1DLattice, G1DLatt
-include("Crystal/General1D/General1DLattice.jl")
-include("Crystal/General1D/getAllPairs.jl")
+include("Lattice/Crystal/General1D/General1DLattice.jl")
+include("Lattice/Crystal/General1D/getAllPairs.jl")
 
-## 2D
+### 2D
 export General2DLattice, G2DLatt
-include("Crystal/General2D/General2DLattice.jl")
-include("Crystal/General2D/getAllPairs.jl")
+include("Lattice/Crystal/General2D/General2DLattice.jl")
+include("Lattice/Crystal/General2D/getAllPairs.jl")
 
 export SquareLattice, SquaLatt
-include("Crystal/Square/SquareLattice.jl")
-include("Crystal/Square/getAllPairs.jl")
+include("Lattice/Crystal/Square/SquareLattice.jl")
+include("Lattice/Crystal/Square/getAllPairs.jl")
 
 export TriangularLattice, TriaLatt
-include("Crystal/Triangular/TriangularLattice.jl")
-include("Crystal/Triangular/getAllPairs.jl")
+include("Lattice/Crystal/Triangular/TriangularLattice.jl")
+include("Lattice/Crystal/Triangular/getAllPairs.jl")
 
 export HexagonalLattice, HexaLatt
-include("Crystal/Hexagonal/HexagonalLattice.jl")
-include("Crystal/Hexagonal/getAllPairs.jl")
+include("Lattice/Crystal/Hexagonal/HexagonalLattice.jl")
+include("Lattice/Crystal/Hexagonal/getAllPairs.jl")
 
 export KagomeLattice, KagoLatt
-include("Crystal/Kagome/KagomeLattice.jl")
-include("Crystal/Kagome/getAllPairs.jl")
+include("Lattice/Crystal/Kagome/KagomeLattice.jl")
+include("Lattice/Crystal/Kagome/getAllPairs.jl")
 
-## 3D
+### 3D
 export General3DLattice, G3DLatt
-include("Crystal/General3D/General3DLattice.jl")
-include("Crystal/General3D/getAllPairs.jl")
+include("Lattice/Crystal/General3D/General3DLattice.jl")
+include("Lattice/Crystal/General3D/getAllPairs.jl")
 
 export CubicLattice, CubiLatt
-include("Crystal/Cubic/CubicLattice.jl")
-include("Crystal/Cubic/getAllPairs.jl")
+include("Lattice/Crystal/Cubic/CubicLattice.jl")
+include("Lattice/Crystal/Cubic/getAllPairs.jl")
 
 
-# Quasicrystal
+## Quasicrystal
 export AbstractQuasicrystalLattice
-include("Quasicrystal/AbstractQuasicrystalLattice.jl")
+include("Lattice/Quasicrystal/AbstractQuasicrystalLattice.jl")
 
 export ThueMorseLattice, ThueMorseLatt, get_first, get_n, get_r
-include("Quasicrystal/ThueMorse/ThueMorseLatt.jl")
-include("Quasicrystal/ThueMorse/getAllPairs.jl")
+include("Lattice/Quasicrystal/ThueMorse/ThueMorseLatt.jl")
+include("Lattice/Quasicrystal/ThueMorse/getAllPairs.jl")
 
 export General2DQuasicrystalLattice, G2DQLatt
-include("Quasicrystal/General2D/General2DQuasicrystal.jl")
-include("Quasicrystal/General2D/getAllPairs.jl")
+include("Lattice/Quasicrystal/General2D/General2DQuasicrystal.jl")
+include("Lattice/Quasicrystal/General2D/getAllPairs.jl")
 
 end # module LatticeKit
