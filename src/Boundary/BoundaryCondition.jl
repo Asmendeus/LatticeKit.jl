@@ -15,8 +15,8 @@ struct MixedBoundaryCondition{D} <: AbstractBoundaryCondition where D
     function MixedBoundaryCondition(boundary::NTuple{D, AbstractBoundaryCondition}) where D
         return MixedBoundaryCondition{D}(boundary)
     end
-    function MixedBoundaryCondition(boundary::AbstractBoundaryCondition...) where D
-        return MixedBoundaryCondition{D}(boundary)
+    function MixedBoundaryCondition(boundary::AbstractBoundaryCondition...)
+        return MixedBoundaryCondition{length(boundary)}(boundary)
     end
 end
 const MBC = MixedBoundaryCondition
