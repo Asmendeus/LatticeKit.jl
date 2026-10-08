@@ -1,7 +1,7 @@
 name = "LatticeKit"
 uuid = "c5541aab-fd05-45d9-a9ee-bd64ea018e2d"
 authors = ["Jia-heng Ji <1422805255@qq.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"

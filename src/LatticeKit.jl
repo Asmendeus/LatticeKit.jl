@@ -52,6 +52,14 @@ export KagomeLattice, KagoLatt
 include("Lattice/Crystal/Kagome/KagomeLattice.jl")
 include("Lattice/Crystal/Kagome/getAllPairs.jl")
 
+export LiebLattice, LiebLatt
+include("Lattice/Crystal/Lieb/LiebLattice.jl")
+include("Lattice/Crystal/Lieb/getAllPairs.jl")
+
+export DecoratedSquareLattice, DecSquaLatt
+include("Lattice/Crystal/DecoratedSquare/DecoratedSquareLattice.jl")
+include("Lattice/Crystal/DecoratedSquare/getAllPairs.jl")
+
 ### 3D
 export General3DLattice, G3DLatt
 include("Lattice/Crystal/General3D/General3DLattice.jl")

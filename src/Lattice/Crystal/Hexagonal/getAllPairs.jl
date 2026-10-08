@@ -1,6 +1,6 @@
 function getAllPairs(latt::HexagonalLattice{L, W}, v::NTuple{2, Int64}, which_from::Int64, which_to::Int64, boundary::AbstractBoundaryCondition=PBC()) where {L, W}
-    @assert which_from in (1, 2) "Out of the range of subcell: `which_from = $which_from`"
-    @assert which_to in (1, 2) "Out of the range of subcell: `which_to = $which_to`"
+    @assert which_from in 1:2 "Out of the range of subcell: `which_from = $which_from`"
+    @assert which_to in 1:2 "Out of the range of subcell: `which_to = $which_to`"
 
     pairs = NTuple{2, Int64}[]
     if boundary isa PBC
